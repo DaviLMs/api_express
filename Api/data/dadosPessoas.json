@@ -1,9 +1,10 @@
-{
+[
+  {
     "customerWallets": {
       "data": [
         {
           "id": "5da9ea674234635bdff45c02",
-          "name": "Cliente 149501",
+          "name": "Cliente149501",
           "parentId": "5da9ea6732123433432",
           "birthDate": "1966-10-23T03:00:00Z",
           "cellphone": "(32)(11111111)",
@@ -40,3 +41,4 @@
       ]
     }
   }
+]
