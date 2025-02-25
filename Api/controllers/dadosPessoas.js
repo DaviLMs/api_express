@@ -12,10 +12,14 @@ module.exports = () => {
 
     const controlador = {};
 
+//------------------------------------------------------------------------------------------
+
     controlador.listar = (req, res) => {
         return res.status(200).json(dadosPessoas);
     };
 
+
+    //------------------------------------------------------------------------------------------
     controlador.filtrar = (req, res) => {
         const { name } = req.query;
         console.log(name);
