@@ -6,4 +6,5 @@ module.exports = app => {
   app.route('/api/v1/produtos/:id').delete(controlador.deletar);
   app.route('/api/v1/produtos/:id').get(controlador.buscar);  
   app.route('/api/v1/produtos/:id').put(controlador.alterar); 
+  
 };
