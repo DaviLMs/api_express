@@ -33,7 +33,7 @@ module.exports = () => {
   controlador.deletar = (req, res) => {
     const { id } = req.params; 
 
-    const produtoIndex = produtos.findIndex(produto => produto.id === id);
+    const produtoIndex = produtos.find(produto => produto.id === id);
 
     if (produtoIndex === -1) {
       return res.status(404).json({ message: 'Produto não encontrado!' });
