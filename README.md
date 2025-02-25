@@ -13,3 +13,6 @@ Esta API permite gerenciar informações sobre produtos e dados de pessoas, com 
 2. [Controlador de Dados Pessoas](#controlador-de-dados-pessoas)
     - [Listar Pessoas](#listar-pessoas)
     - [Filtrar Pessoas](#filtrar-pessoas)
+
+Todos os dados estão sendo passados de Routes para Controller 
+controller está puxando e tratando a requisição e suas respectivas resposatas.
