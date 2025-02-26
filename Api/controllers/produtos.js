@@ -20,7 +20,7 @@ module.exports = () => {
 
     if (!novoProduto.name || !novoProduto.price || !novoProduto.category) {
       return res.status(400).json({ message: 'Nome, preço e categoria são obrigatórios!' });
-    }
+    } 
 
     produtos.push(novoProduto);
     fs.writeFileSync(produtosFilePath, JSON.stringify(produtos,  2));

@@ -42,5 +42,22 @@ module.exports = () => {
         }
     };
 
+//------------------------------------------------------------------------------------------
+
+    controlador.adicionar = (req, res) => {
+
+        const NovaPessoa = req.body
+        
+        if (!NovaPessoa.name || !NovaPessoa.id || !NovaPessoa.email ) {
+            return res.status(400).json('Nome, id e email são compos obrigatórios')
+        }
+
+        dadosPessoas.push(NovaPessoa)
+        fs.writeFileSync(dadosPessoas, JSON.stringify(dadosPessoas, 2))
+        
+        res.status(201).json({ mensagem: 'nova pessoa salva!', pessoa: NovaPessoa })
+    }
+    
+    
     return controlador;
 };
