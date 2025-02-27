@@ -9,22 +9,21 @@ module.exports = () => {
     if (!Array.isArray(dadosPessoas)) {
         throw new Error('dadosPessoas não é um array!');
     }
-
+ 
     const controlador = {};
 
 //------------------------------------------------------------------------------------------
 
-    controlador.listar = (req, res) => {
+    controlador.listar = (req, res) => { 
         return res.status(200).json(dadosPessoas);
-    };
-
+    }; 
 
 //------------------------------------------------------------------------------------------
     
     controlador.filtrar = (req, res) => {
         const { name } = req.query;
-        console.log(name);
-        
+        console.log(name); 
+         
         let resultado = dadosPessoas;
 
         if (name) {
@@ -33,7 +32,6 @@ module.exports = () => {
             );
             console.log(resultado);
         }
-
 
         if (resultado.length > 0) {
             return res.status(200).json(resultado);
@@ -45,19 +43,35 @@ module.exports = () => {
 //------------------------------------------------------------------------------------------
 
     controlador.adicionar = (req, res) => {
-
-        const NovaPessoa = req.body
+        const NovaPessoa = req.body;
+        console.log(NovaPessoa);
         
-        if (!NovaPessoa.name || !NovaPessoa.id || !NovaPessoa.email ) {
-            return res.status(400).json('Nome, id e email são compos obrigatórios')
+        if (!NovaPessoa.name || !NovaPessoa.id || !NovaPessoa.email) {
+            return res.status(400).json('Nome, id e email são campos obrigatórios');
         }
 
-        dadosPessoas.push(NovaPessoa)
-        fs.writeFileSync(dadosPessoas, JSON.stringify(dadosPessoas, 2))
+        dadosPessoas.push(NovaPessoa);
+        fs.writeFileSync(filePath, JSON.stringify(dadosPessoas, 2));
         
-        res.status(201).json({ mensagem: 'nova pessoa salva!', pessoa: NovaPessoa })
+        res.status(201).json({ mensagem: 'Nova pessoa salva!', pessoa: NovaPessoa });
     }
     
+    controlador.deletar = (req, res) => {
+        const { id } = req.params;
+        console.log(id);
+        
+        const pessoaIndex = dadosPessoas.findIndex(pessoa => pessoa.id == id);
+        console.log(pessoaIndex);
+     
+        if (pessoaIndex === -1) {
+            return res.status(404).json({ mensagem: 'Pessoa não encontrada!' });
+        }
+    
+        dadosPessoas.splice(pessoaIndex, 1);
+        fs.writeFileSync(filePath, JSON.stringify(dadosPessoas, 2));
+        
+        res.status(200).json({ mensagem: 'Pessoa deletada com sucesso!' });
+    }
     
     return controlador;
 };

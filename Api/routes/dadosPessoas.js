@@ -4,5 +4,5 @@ module.exports = app => {
     app.route('/api/v1/dadosPessoas').get(controlador.listar)
     app.route('/api/v1/dadosPessoas/filtrar').get(controlador.filtrar);
     app.route('/api/v1/dadosPessoas/adicionar').post(controlador.adicionar);
-
-}
+    app.route('/api/v1/dadosPessoas/:id').delete(controlador.deletar);
+}   
